@@ -44,4 +44,27 @@ public class TemplateResponse {
         return obj == null;
 
     }
+
+    public Map Sukses(Object objek){
+        Map map = new HashMap();
+        map.put("message", "Success");
+        map.put("status", "200");
+        map.put("data", objek);
+
+        return map;
+    }
+
+    public Map Error(Object objek){
+        Map map = new HashMap();
+        map.put("message", objek);
+        map.put("status", "404");
+        return map;
+    }
+
+    public boolean chekNull(Object obj){
+        if(obj == null){
+            return true;
+        }
+        return  false;
+    }
 }
