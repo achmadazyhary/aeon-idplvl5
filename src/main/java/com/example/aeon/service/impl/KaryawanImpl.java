@@ -80,7 +80,8 @@ public class KaryawanImpl implements KaryawanService {
             DetailKaryawan dataDetailKry = new DetailKaryawan();
             dataDetailKry.setNik(karyawan.getDetailKaryawan().getNik());
             dataDetailKry.setNpwp(karyawan.getDetailKaryawan().getNpwp());
-            DetailKaryawan detailKryNew = detailKaryawanRepository.save(dataDetailKry);
+            dataDetailKry.setKaryawan(karyawanNew);
+            detailKaryawanRepository.save(dataDetailKry);
             return templateResponse.templateSukses(karyawanNew);
         } catch (Exception e) {
             return templateResponse.templateError(e);

@@ -38,9 +38,11 @@ public class Karyawan extends AbstractDate implements Serializable {
 	@Column(name = "status", length = 15)
 	private String status;
 
+
 	@OneToOne(mappedBy = "karyawan")
 	private DetailKaryawan detailKaryawan;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "karyawan")
 	List<KaryawanTraining> karyawanTrainings;
 

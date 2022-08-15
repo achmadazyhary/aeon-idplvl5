@@ -14,7 +14,7 @@ import javax.validation.Valid;
 import java.util.Map;
 
 @RestController
-@RequestMapping("v1/rekening")
+@RequestMapping("/v1/rekening")
 public class RekeningController {
 
     @Autowired

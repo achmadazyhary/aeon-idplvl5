@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("v1/karyawantraining")
+@RequestMapping("/v1/training-karyawan")
 public class KaryawanTrainingController {
 
     @Autowired

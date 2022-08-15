@@ -35,11 +35,4 @@ public class KaryawanTraining extends AbstractDate implements Serializable {
     @ManyToOne
     @JoinColumn(name = "karyawan_id")
     Karyawan karyawan;
-
-
-
-
-
-
-
 }

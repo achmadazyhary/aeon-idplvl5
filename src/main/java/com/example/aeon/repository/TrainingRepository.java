@@ -20,7 +20,7 @@ public interface TrainingRepository extends PagingAndSortingRepository<Training,
     @Query("select c from Training c where c.tema like :tema")// nama class
     public Page<Training> findByTema(String tema , Pageable pageable);
 
-    @Query("select c from Training c where c.nama_pengajar like :namaPengajar")// nama class
+    @Query("select c from Training c where c.namaPengajar like :namaPengajar")// nama class
     public Page<Training> findByNamaPengajar(String namaPengajar , Pageable pageable);
 }
 

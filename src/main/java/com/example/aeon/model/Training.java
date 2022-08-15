@@ -1,5 +1,6 @@
 package com.example.aeon.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.Where;
 
@@ -22,13 +23,15 @@ public class Training extends AbstractDate implements Serializable {
     private String tema;
 
     @Column(name = "nama_pengajar", length = 45)
-    private String nama_pengajar;
+    private String namaPengajar;
 
-    @OneToOne(mappedBy = "training")
-    private KaryawanTraining karyawanTraining;
+//    @JsonIgnore
+//    @OneToOne(mappedBy = "training")
+//    private KaryawanTraining karyawanTraining;
 
-    @OneToMany(mappedBy = "training")
-    List<KaryawanTraining> karyawanTrainings;
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "training")
+//    List<KaryawanTraining> karyawanTrainings;
 
 
 }

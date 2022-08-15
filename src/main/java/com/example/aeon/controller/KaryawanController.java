@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("v1/karyawan")
+@RequestMapping("/v1/karyawan")
 public class KaryawanController {
 
     @Autowired
@@ -64,6 +64,12 @@ public class KaryawanController {
             list = karyawanRepository.getAllData(show_data);
         }
         return new ResponseEntity<Map>(templateResponse.templateSukses(list), new HttpHeaders(), HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Map> getId(@PathVariable(value = "id") Long id) {
+       Karyawan obj1 = karyawanRepository.getByID(id);
+        return new ResponseEntity<Map>(templateResponse.templateSukses(obj1), HttpStatus.OK);
     }
 
 

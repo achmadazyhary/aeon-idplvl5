@@ -15,6 +15,7 @@ import java.util.Map;
 @Service
 public class TrainingImpl implements TrainingService {
 
+    @Autowired
     public TrainingRepository trainingRepository;
 
     public static final Logger log = LoggerFactory.getLogger(KaryawanImpl.class);
@@ -51,7 +52,7 @@ public class TrainingImpl implements TrainingService {
             }
 
             updateTraining.setTema(obj.getTema());
-            updateTraining.setNama_pengajar(obj.getNama_pengajar());
+            updateTraining.setNamaPengajar(obj.getNamaPengajar());
             updateTraining.setUpdated_date(new Date());
 
             Training updatedData = trainingRepository.save(updateTraining);

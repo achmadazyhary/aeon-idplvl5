@@ -1,5 +1,6 @@
 package com.example.aeon.controller;
 
+import com.example.aeon.model.Karyawan;
 import com.example.aeon.model.Training;
 import com.example.aeon.repository.TrainingRepository;
 import com.example.aeon.service.TrainingService;
@@ -18,7 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("v1/training")
+@RequestMapping("/v1/training")
 public class TrainingController {
 
     @Autowired
@@ -30,14 +31,13 @@ public class TrainingController {
     @Autowired
     public TemplateResponse templateResponse;
 
-    @PostMapping("/save")
+    @PostMapping("")
     public ResponseEntity<Map> save(@RequestBody Training objModel) {
-        Map map = new HashMap();
-        Map obj = (Map) trainingRepository.save(objModel);
-        return new ResponseEntity<Map>(obj, HttpStatus.OK);
+      Map map =  trainingService.insert(objModel);
+        return new ResponseEntity<Map>(map, HttpStatus.OK);
     }
 
-    @PutMapping("/update")
+    @PutMapping("")
     public ResponseEntity<Map> update(@RequestBody Training objModel) {
         Map obj = trainingService.update(objModel);
         return new ResponseEntity<Map>(obj, HttpStatus.OK);
@@ -64,6 +64,12 @@ public class TrainingController {
             list = trainingRepository.getAllData(show_data);
         }
         return new ResponseEntity<Map>(templateResponse.templateSukses(list), new HttpHeaders(), HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Map> getId(@PathVariable(value = "id") Long id) {
+        Training obj1 = trainingRepository.getbyID(id);
+        return new ResponseEntity<Map>(templateResponse.templateSukses(obj1), HttpStatus.OK);
     }
 
 
