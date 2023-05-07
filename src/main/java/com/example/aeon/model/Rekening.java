@@ -27,7 +27,7 @@ public class Rekening extends AbstractDate implements Serializable {
     private String nomor;
 
     @ManyToOne(targetEntity = Karyawan.class)
-    private Karyawan karyawan;
+    private Karyawan karyawan; //karyawan_id
 
 
 }

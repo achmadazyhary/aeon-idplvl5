@@ -18,6 +18,9 @@ public interface KaryawanRepository extends PagingAndSortingRepository<Karyawan,
     @Query("SELECT c from Karyawan c WHERE c.id = :idkaryawan")
     Karyawan getByID(@Param("idkaryawan") Long idbebas);
 
+//    @Query(name = "SELECT c from karyawan c WHERE c.id = :idkaryawan", nativeQuery = true)
+//    Karyawan getByIDByNativeQueri(@Param("idkaryawan") Long idbebas);
+
     @Query("select c from Karyawan c where c.nama= :nama")
     public Page<Karyawan> findByNama(String nama , Pageable pageable);
 

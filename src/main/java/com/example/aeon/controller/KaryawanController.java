@@ -38,9 +38,9 @@ public class KaryawanController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Map> update(@RequestBody Karyawan objModel) {
-        Map obj = karyawanService.updateKryAndDetail(objModel);
-        return new ResponseEntity<Map>(obj, HttpStatus.OK);
+    public ResponseEntity<Map> update(@RequestBody Karyawan objModel) { // request degan type PUT method
+        Map obj = karyawanService.updateKryAndDetail(objModel); // sini logig
+        return new ResponseEntity<Map>(obj, HttpStatus.OK);// response
     }
 
     @DeleteMapping("/delete/{id}")
@@ -59,7 +59,7 @@ public class KaryawanController {
         Pageable show_data = PageRequest.of(page, size, Sort.by("id").descending());//batasin roq
 
         if ( nama != null && !nama.isEmpty() ) {
-            list = karyawanRepository.findByNama("%" + nama + "%", show_data);
+            list = karyawanRepository.findByNamaLike("%" + nama + "%", show_data);
         } else {
             list = karyawanRepository.getAllData(show_data);
         }

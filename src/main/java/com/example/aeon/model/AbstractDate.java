@@ -20,7 +20,6 @@ import java.util.Date;
 )
 public abstract class AbstractDate implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ", timezone = "Asia/Jakarta")
-
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_date", nullable = true, updatable = false)
 

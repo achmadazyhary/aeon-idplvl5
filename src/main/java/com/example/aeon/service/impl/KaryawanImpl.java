@@ -38,6 +38,7 @@ public class KaryawanImpl implements KaryawanService {
             if (templateResponse.checkNull(karyawan.getNama())) {
                 return templateResponse.templateError("Nama is required");
             }
+            // method JPA save : fungsi update simpan ke dtabse
             Karyawan kryObj = karyawanRepository.save(karyawan);
             log.info("{}", "Sukses");
             return templateResponse.templateSukses(kryObj);
@@ -63,7 +64,7 @@ public class KaryawanImpl implements KaryawanService {
                 return templateResponse.templateError("NIK is Requiered");
             }
             if (templateResponse.checkNull(karyawan.getRekenings())){
-                
+
             }
             ;
 //            3. insert karyawan
@@ -97,11 +98,13 @@ public class KaryawanImpl implements KaryawanService {
             if (templateResponse.checkNull(kryReq.getId())) {
                 return templateResponse.templateError("Id Barang is required");
             }
+            // 1. cehk dataabse
             Karyawan checkIdKry = karyawanRepository.getByID(kryReq.getId());
             if (templateResponse.checkNull(checkIdKry)) {
                 return templateResponse.templateError("Id Barang Not found");
             }
 
+//            2. lakukan update
             checkIdKry.setNama(kryReq.getNama());
             checkIdKry.setDob(kryReq.getDob());
             checkIdKry.setJk(kryReq.getJk());
@@ -109,6 +112,8 @@ public class KaryawanImpl implements KaryawanService {
             checkIdKry.setAlamat(kryReq.getAlamat());
             Date date = new Date(System.currentTimeMillis());
             checkIdKry.setUpdated_date(date);
+
+            //3. simpan
             Karyawan dosave = karyawanRepository.save(checkIdKry);
             return templateResponse.templateSukses(dosave);
         } catch (Exception e) {

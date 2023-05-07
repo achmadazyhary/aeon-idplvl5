@@ -61,7 +61,7 @@ public class KaryawanTrainingController {
 
         if ( namaKaryawan != null && !namaKaryawan.isEmpty() ) {
             list = karyawanTrainingRepository.findByKaryawanNamaLike("%" + namaKaryawan + "%", show_data);
-        }
+        }else
         if ( temaTraining != null && !temaTraining.isEmpty() ) {
             list = karyawanTrainingRepository.findByTrainingTemaLike("%" + temaTraining + "%", show_data);
         } else {
@@ -70,3 +70,4 @@ public class KaryawanTrainingController {
         return new ResponseEntity<Map>(templateResponse.templateSukses(list), new HttpHeaders(), HttpStatus.OK);
     }
 }
+
