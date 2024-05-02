@@ -11,6 +11,9 @@ public interface UserRepository extends PagingAndSortingRepository<User, Long> {
     @Query("FROM User u WHERE u.otp = ?1")
     User findOneByOTP(String otp);
 
+    @Query("FROM User u WHERE LOWER(u.username) = LOWER(?1) AND u.otp = ?2")
+    User findOneByOTPandUsername(String username, String otp);
+
     @Query("FROM User u WHERE LOWER(u.username) = LOWER(:username)")
     User checkExistingEmail(String username);
 }
